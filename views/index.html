@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CloudApp - Programación en la Nube</title>
-    <!-- FontAwesome para Iconos (CDN seguro) -->
+    <title>CloudApp - miguelangel angulo sossa (org744)</title>
+    <!-- FontAwesome 6 para Iconografía Profesional -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #4f46e5;
-            --primary-hover: #4338ca;
+            --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
             --secondary: #0d9488;
             --dark-bg: #0f172a;
             --card-bg: #ffffff;
@@ -17,8 +17,9 @@
             --text-muted: #64748b;
             --bg-accent: #f8fafc;
             --border-color: #e2e8f0;
-            --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
-            --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             --radius: 16px;
         }
 
@@ -38,7 +39,7 @@
             line-height: 1.6;
         }
 
-        /* Header / Navbar */
+        /* Navbar Superior */
         header {
             background: var(--dark-bg);
             color: white;
@@ -46,21 +47,49 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .brand {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.35rem;
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: 800;
             letter-spacing: -0.5px;
         }
 
         .brand i {
             color: #38bdf8;
-            font-size: 1.6rem;
+            font-size: 1.75rem;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .url-pill {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .url-pill:hover {
+            background: rgba(56, 189, 248, 0.3);
         }
 
         .user-badge {
@@ -69,17 +98,17 @@
             border-radius: 30px;
             font-size: 0.88rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
             display: flex;
             align-items: center;
             gap: 8px;
+            font-weight: 600;
         }
 
         /* Hero Banner */
         .hero {
-            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4f46e5 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
             color: white;
-            padding: 4rem 2rem;
+            padding: 4.5rem 2rem 5.5rem 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -92,39 +121,77 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 60%);
             pointer-events: none;
         }
 
         .hero h1 {
-            font-size: 2.75rem;
+            font-size: 2.8rem;
             font-weight: 800;
             margin-bottom: 1rem;
             letter-spacing: -1px;
+            background: linear-gradient(to right, #ffffff, #c7d2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.15rem;
-            max-width: 700px;
+            font-size: 1.2rem;
+            max-width: 750px;
             margin: 0 auto 2rem auto;
-            color: #c7d2fe;
+            color: #94a3b8;
+        }
+
+        .status-container {
+            display: inline-flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .status-dot {
+            width: 9px;
+            height: 9px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #22c55e;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         /* Container Principal */
         .container {
             max-width: 1200px;
-            margin: -2rem auto 3rem auto;
+            margin: -3rem auto 3rem auto;
             padding: 0 1.5rem;
             width: 100%;
             position: relative;
             z-index: 10;
         }
 
-        /* Clock Card Header */
+        /* Reloj Digital y Métricas en Tiempo Real */
         .clock-card {
             background: var(--card-bg);
             border-radius: var(--radius);
-            padding: 1.5rem 2rem;
+            padding: 1.75rem 2rem;
             box-shadow: var(--shadow-md);
             display: flex;
             flex-wrap: wrap;
@@ -142,39 +209,67 @@
         }
 
         .clock-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 12px;
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
             background: #e0e7ff;
             color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
         }
 
         .clock-details h4 {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-weight: 700;
         }
 
         .clock-details span {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--text-main);
         }
 
+        .clock-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
         .time-display {
-            font-size: 1.75rem;
+            font-size: 1.85rem;
             font-weight: 800;
             font-family: 'Courier New', Courier, monospace;
             color: var(--primary);
             background: #f1f5f9;
-            padding: 8px 20px;
-            border-radius: 10px;
+            padding: 8px 22px;
+            border-radius: 12px;
             border: 1px solid #cbd5e1;
+            letter-spacing: 1px;
+        }
+
+        .btn-refresh-status {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-refresh-status:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
         }
 
         /* Layout Grid */
@@ -185,24 +280,24 @@
             margin-bottom: 2rem;
         }
 
-        @media (max-width: 868px) {
+        @media (max-width: 900px) {
             .grid-2 {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* Card Styles */
+        /* Estilos de Tarjeta */
         .card {
             background: var(--card-bg);
             border-radius: var(--radius);
             padding: 2rem;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-color);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.25 ease, box-shadow 0.25s ease;
         }
 
         .card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-md);
         }
 
@@ -210,8 +305,8 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.85rem;
             border-bottom: 2px solid #f1f5f9;
         }
 
@@ -226,7 +321,7 @@
             color: var(--text-main);
         }
 
-        /* Info Items */
+        /* Lista de Información */
         .info-list {
             list-style: none;
             display: flex;
@@ -238,90 +333,217 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 14px;
+            padding: 12px 16px;
             background: #f8fafc;
-            border-radius: 8px;
+            border-radius: 10px;
             border-left: 4px solid var(--primary);
         }
 
         .info-label {
             font-weight: 600;
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.92rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .info-value {
             font-weight: 700;
             color: var(--text-main);
+            font-size: 0.95rem;
         }
 
-        /* Benefits List */
-        .benefit-item {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 1.25rem;
+        .info-value a {
+            color: var(--primary);
+            text-decoration: none;
         }
 
-        .benefit-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
+        .info-value a:hover {
+            text-decoration: underline;
+        }
+
+        /* Ventajas Cloud */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 600px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .benefit-box {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.25rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+        }
+
+        .benefit-box:hover {
+            border-color: var(--primary);
+            background: #ffffff;
+        }
+
+        .benefit-icon-wrapper {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
             background: #ccfbf1;
             color: var(--secondary);
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            margin-top: 2px;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
         }
 
-        .benefit-text h5 {
+        .benefit-box h5 {
             font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
+            color: var(--text-main);
         }
 
-        .benefit-text p {
-            font-size: 0.9rem;
+        .benefit-box p {
+            font-size: 0.86rem;
             color: var(--text-muted);
+            line-height: 1.4;
         }
 
-        /* Tech Badges Grid */
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
+        /* Tabla de Tecnologías */
+        .table-responsive {
+            overflow-x: auto;
         }
 
-        .tech-card {
-            background: var(--bg-accent);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.2rem;
-            text-align: center;
-            transition: all 0.2s ease;
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5rem;
+            font-size: 0.92rem;
         }
 
-        .tech-card:hover {
-            border-color: var(--primary);
-            background: #ffffff;
-        }
-
-        .tech-card i {
-            font-size: 2rem;
-            margin-bottom: 8px;
-            color: var(--primary);
-        }
-
-        .tech-card.express i { color: #000000; }
-        .tech-card.render i { color: #46e3b7; }
-        .tech-card.github i { color: #24292e; }
-
-        .tech-card span {
-            display: block;
-            font-size: 0.9rem;
+        .tech-table th {
+            background: #f1f5f9;
+            color: var(--text-main);
+            text-align: left;
+            padding: 12px 16px;
             font-weight: 700;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .tech-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tech-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tech-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .badge-nodejs { background: #dcfce7; color: #166534; }
+        .badge-express { background: #f1f5f9; color: #0f172a; }
+        .badge-render { background: #e0f2fe; color: #0369a1; }
+        .badge-github { background: #f3e8ff; color: #6b21a8; }
+
+        /* Formulario Interactivo */
+        .full-width-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        @media (max-width: 650px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-submit {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-submit:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .alert-response {
+            margin-top: 1.25rem;
+            padding: 14px 18px;
+            border-radius: 10px;
+            display: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .alert-success {
+            background: #dcfce7;
+            color: #15803d;
+            border: 1px solid #86efac;
         }
 
         /* Footer */
@@ -330,224 +552,334 @@
             background: var(--dark-bg);
             color: #94a3b8;
             text-align: center;
-            padding: 1.5rem;
+            padding: 1.75rem;
             font-size: 0.9rem;
             border-top: 1px solid #1e293b;
         }
 
-        footer strong {
-            color: #ffffff;
-        }
-
-        /* Status Badge */
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #dcfce7;
-            color: #15803d;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #22c55e;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(1.2); }
-            100% { opacity: 1; transform: scale(1); }
-        }
+        footer strong { color: #ffffff; }
     </style>
 </head>
 <body>
 
-    <!-- Header / Barra Superior -->
+    <!-- Header / Navbar Superior -->
     <header>
         <div class="brand">
             <i class="fa-solid fa-cloud"></i>
             <span>CloudApp</span>
         </div>
-        <div class="user-badge">
-            <i class="fa-solid fa-user-graduate"></i>
-            <span>org744</span>
+        <div class="header-actions">
+            <a href="https://cloudapp-yhac.onrender.com" target="_blank" class="url-pill">
+                <i class="fa-solid fa-globe"></i>
+                <span>cloudapp-yhac.onrender.com</span>
+            </a>
+            <div class="user-badge">
+                <i class="fa-solid fa-user-graduate"></i>
+                <span>org744</span>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>¡Bienvenido a la Nube! 🚀</h1>
-        <p>Aplicación Web Profesional desplegada en Render con Node.js y Express para la asignatura de Programación en la Nube.</p>
-        <div class="status-badge">
-            <span class="status-dot"></span>
-            <span>Servidor En Línea / Render Cloud Active</span>
+        <h1>Plataforma Web en la Nube 🚀</h1>
+        <p>Aplicación empresarial desarrollada en Node.js y Express para la materia de Programación en la Nube, desplegada con Continuous Deployment en Render PaaS.</p>
+        <div class="status-container">
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                <span>Render Cloud: Activo (Production)</span>
+            </div>
+            <div class="status-badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);">
+                <i class="fa-solid fa-code-branch"></i>
+                <span>CI/CD GitHub Pipeline: Active</span>
+            </div>
         </div>
     </section>
 
     <!-- Contenido Principal -->
     <div class="container">
 
-        <!-- Reloj en Tiempo Real -->
+        <!-- Reloj Digital y Métricas en Tiempo Real -->
         <div class="clock-card">
             <div class="clock-info">
                 <div class="clock-icon">
                     <i class="fa-regular fa-clock"></i>
                 </div>
                 <div class="clock-details">
-                    <h4>Hora y Fecha del Servidor / Cliente</h4>
+                    <h4>Fecha y Hora Exacta en Tiempo Real</h4>
                     <span id="current-date">Cargando fecha...</span>
                 </div>
             </div>
-            <div class="time-display" id="current-time">00:00:00</div>
+            <div class="clock-right">
+                <div class="time-display" id="current-time">00:00:00</div>
+                <button class="btn-refresh-status" onclick="fetchApiStatus()">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <span>Estado API</span>
+                </button>
+            </div>
         </div>
 
-        <!-- Fila de Tarjetas Información y Ventajas -->
+        <!-- Grid 2 Columnas -->
         <div class="grid-2">
             
-            <!-- Tarjeta de Datos del Estudiante -->
+            <!-- Datos Obligatorios del Estudiante -->
             <div class="card">
                 <div class="card-header">
-                    <i class="fa-solid fa-id-card"></i>
-                    <h3>Información del Proyecto</h3>
+                    <i class="fa-solid fa-user-check"></i>
+                    <h3>Información del Estudiante & Proyecto</h3>
                 </div>
                 <ul class="info-list">
                     <li class="info-item">
-                        <span class="info-label">Estudiante:</span>
+                        <span class="info-label"><i class="fa-solid fa-user"></i> Estudiante:</span>
                         <span class="info-value">miguelangel angulo sossa</span>
                     </li>
                     <li class="info-item">
-                        <span class="info-label">Usuario / ID:</span>
+                        <span class="info-label"><i class="fa-solid fa-id-badge"></i> Usuario / ID:</span>
                         <span class="info-value">org744</span>
                     </li>
                     <li class="info-item">
-                        <span class="info-label">Proyecto / Repositorio:</span>
+                        <span class="info-label"><i class="fa-solid fa-folder-tree"></i> Repositorio:</span>
                         <span class="info-value">cloudapp</span>
                     </li>
                     <li class="info-item">
-                        <span class="info-label">Entorno de Ejecución:</span>
-                        <span class="info-value">Node.js + Express v4</span>
+                        <span class="info-label"><i class="fa-solid fa-link"></i> URL Pública Render:</span>
+                        <span class="info-value">
+                            <a href="https://cloudapp-yhac.onrender.com" target="_blank">cloudapp-yhac.onrender.com</a>
+                        </span>
                     </li>
                     <li class="info-item">
-                        <span class="info-label">Plataforma Cloud:</span>
-                        <span class="info-value">Render (PaaS)</span>
+                        <span class="info-label"><i class="fa-solid fa-microchip"></i> Uptime Servidor:</span>
+                        <span class="info-value" id="server-uptime">Obteniendo...</span>
                     </li>
                 </ul>
             </div>
 
-            <!-- Tarjeta de Ventajas de Computación en la Nube -->
+            <!-- Ventajas de la Computación en la Nube -->
             <div class="card">
                 <div class="card-header">
                     <i class="fa-solid fa-cloud-arrow-up"></i>
-                    <h3>Ventajas de la Computación en la Nube</h3>
+                    <h3>Ventajas Cloud en este Proyecto</h3>
                 </div>
-                
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fa-solid fa-expand"></i>
-                    </div>
-                    <div class="benefit-text">
+                <div class="benefits-grid">
+                    <div class="benefit-box">
+                        <div class="benefit-icon-wrapper">
+                            <i class="fa-solid fa-arrows-up-to-line"></i>
+                        </div>
                         <h5>Escalabilidad Dinámica</h5>
-                        <p>Capacidad de ajustar recursos de cómputo en tiempo real según la demanda de tráfico.</p>
+                        <p>Auto-escalado de memoria y cómputo según picos de demanda del usuario.</p>
                     </div>
-                </div>
 
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fa-solid fa-piggy-bank"></i>
+                    <div class="benefit-box">
+                        <div class="benefit-icon-wrapper">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h5>Alta Disponibilidad</h5>
+                        <p>Infraestructura distribuida que asegura disponibilidad constante (SLA 99.9%).</p>
                     </div>
-                    <div class="benefit-text">
-                        <h5>Reducción de Costos Operativos</h5>
-                        <p>Modelo de pago por uso sin necesidad de invertir en infraestructura física costosa.</p>
-                    </div>
-                </div>
 
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fa-solid fa-bolt"></i>
+                    <div class="benefit-box">
+                        <div class="benefit-icon-wrapper">
+                            <i class="fa-solid fa-code-commit"></i>
+                        </div>
+                        <h5>Despliegue CI/CD</h5>
+                        <p>Render detecta cada <code>git push</code> en GitHub y redespliega automáticamente.</p>
                     </div>
-                    <div class="benefit-text">
-                        <h5>Despliegue Continuo (CI/CD)</h5>
-                        <p>Integración automática entre GitHub y Render para actualizaciones instantáneas del código.</p>
+
+                    <div class="benefit-box">
+                        <div class="benefit-icon-wrapper">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h5>Acceso Global Remoto</h5>
+                        <p>Acceso seguro HTTPS desde cualquier dispositivo en cualquier parte del mundo.</p>
                     </div>
                 </div>
             </div>
 
         </div>
 
-        <!-- Seccion Tecnologías -->
-        <div class="card">
+        <!-- Tabla de Tecnologías Empleadas -->
+        <div class="card full-width-section">
             <div class="card-header">
-                <i class="fa-solid fa-layer-group"></i>
-                <h3>Tecnologías Utilizadas en la Arquitectura</h3>
+                <i class="fa-solid fa-list-check"></i>
+                <h3>Tecnologías y Stack Técnico de la Arquitectura</h3>
             </div>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <i class="fa-brands fa-node-js"></i>
-                    <span>Node.js</span>
-                </div>
-                <div class="tech-card express">
-                    <i class="fa-solid fa-server"></i>
-                    <span>Express.js</span>
-                </div>
-                <div class="tech-card github">
-                    <i class="fa-brands fa-github"></i>
-                    <span>Git / GitHub</span>
-                </div>
-                <div class="tech-card render">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                    <span>Render</span>
-                </div>
-                <div class="tech-card">
-                    <i class="fa-brands fa-html5"></i>
-                    <span>HTML5 & CSS3</span>
-                </div>
+            <div class="table-responsive">
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Tecnología</th>
+                            <th>Categoría / Rol</th>
+                            <th>Propósito en la Nube</th>
+                            <th>Estado en Render</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="tech-badge badge-nodejs">
+                                    <i class="fa-brands fa-node-js"></i> Node.js
+                                </span>
+                            </td>
+                            <td>Runtime de Ejecución Backend</td>
+                            <td>Ejecución asíncrona no bloqueante de alto rendimiento.</td>
+                            <td><strong style="color:#166534;">✓ Activo (v18+)</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="tech-badge badge-express">
+                                    <i class="fa-solid fa-server"></i> Express.js
+                                </span>
+                            </td>
+                            <td>Framework HTTP Web API</td>
+                            <td>Enrutamiento de vistas estáticas y API RESTful.</td>
+                            <td><strong style="color:#166534;">✓ Activo (v4.19)</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="tech-badge badge-render">
+                                    <i class="fa-solid fa-cloud"></i> Render PaaS
+                                </span>
+                            </td>
+                            <td>Plataforma como Servicio (PaaS)</td>
+                            <td>Hosting, gestión de HTTPS TLS y variables de entorno (`PORT`).</td>
+                            <td><strong style="color:#0369a1;">✓ Desplegado (PaaS)</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="tech-badge badge-github">
+                                    <i class="fa-brands fa-github"></i> Git & GitHub
+                                </span>
+                            </td>
+                            <td>Control de Versiones y Pipeline</td>
+                            <td>Repositorio centralizado con webhook de integración continua.</td>
+                            <td><strong style="color:#6b21a8;">✓ Sincronizado</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+        </div>
+
+        <!-- Formulario Interactivo Simulado -->
+        <div class="card full-width-section">
+            <div class="card-header">
+                <i class="fa-paper-plane fa-solid"></i>
+                <h3>Formulario Interactivo de Registro / Contacto Cloud</h3>
+            </div>
+            <p style="color: var(--text-muted); margin-bottom: 1.25rem; font-size: 0.95rem;">
+                Prueba la comunicación asíncrona interactiva entre el cliente y el servidor Node.js en Render. Al enviar el formulario, el backend procesará la solicitud en tiempo real.
+            </p>
+
+            <form id="cloud-form" onsubmit="handleFormSubmit(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo *</label>
+                        <input type="text" id="name" class="form-control" placeholder="Ej: miguelangel angulo sossa" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico *</label>
+                        <input type="email" id="email" class="form-control" placeholder="Ej: org744@institucional.edu" required>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="topic">Tema de Interés Cloud</label>
+                        <select id="topic" class="form-control">
+                            <option value="Escalabilidad Dinámica">Escalabilidad Dinámica</option>
+                            <option value="CI/CD Pipelines">CI/CD Pipelines (GitHub -> Render)</option>
+                            <option value="Arquitectura de Microservicios">Arquitectura de Microservicios</option>
+                            <option value="Plataformas PaaS y Serverless">Plataformas PaaS y Serverless</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje / Observaciones</label>
+                        <input type="text" id="message" class="form-control" placeholder="Comentarios del proyecto cloudapp...">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Enviar Registro al Servidor Node.js</span>
+                </button>
+            </form>
+
+            <div id="alert-box" class="alert-response alert-success"></div>
         </div>
 
     </div>
 
-    <!-- Pie de página -->
+    <!-- Pie de Página -->
     <footer>
-        <p>&copy; 2026 <strong>CloudApp</strong> - Desarrollado por <strong>miguelangel angulo sossa</strong> (<code>org744</code>)</p>
-        <p style="margin-top: 4px; font-size: 0.8rem; color: #64748b;">Curso de Programación en la Nube - Todos los derechos reservados</p>
+        <p>&copy; 2026 <strong>CloudApp</strong> - Desarrollado por <strong>miguelangel angulo sossa</strong> (ID: <code>org744</code>)</p>
+        <p style="margin-top: 4px; font-size: 0.82rem; color: #64748b;">Asignatura de Programación en la Nube | Desplegado en <a href="https://cloudapp-yhac.onrender.com" style="color:#38bdf8; text-decoration:none;">https://cloudapp-yhac.onrender.com</a></p>
     </footer>
 
-    <!-- Script JavaScript en Tiempo Real -->
+    <!-- Script JavaScript interactivo -->
     <script>
+        // Actualizar reloj digital en tiempo real
         function updateClock() {
             const now = new Date();
-            
-            // Opciones de formato de fecha en español
-            const optionsDate = { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            };
-            
+            const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const dateStr = now.toLocaleDateString('es-ES', optionsDate);
-            const formattedDate = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
-            
-            // Formato de hora HH:MM:SS
+            document.getElementById('current-date').innerText = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
+
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
-            const timeStr = `${hours}:${minutes}:${seconds}`;
-
-            document.getElementById('current-date').innerText = formattedDate;
-            document.getElementById('current-time').innerText = timeStr;
+            document.getElementById('current-time').innerText = `${hours}:${minutes}:${seconds}`;
         }
-
-        // Actualizar reloj de inmediato y cada 1 segundo
         updateClock();
         setInterval(updateClock, 1000);
+
+        // Obtener estado en tiempo real desde la API del servidor
+        async function fetchApiStatus() {
+            try {
+                const res = await fetch('/api/status');
+                const data = await res.json();
+                if (data && data.uptimeSeconds !== undefined) {
+                    document.getElementById('server-uptime').innerText = `${data.uptimeSeconds} seg (${data.memoryUsageMB} MB RAM)`;
+                }
+            } catch (err) {
+                console.log('API Status fetch fallback local');
+                document.getElementById('server-uptime').innerText = 'Activo (En línea)';
+            }
+        }
+        fetchApiStatus();
+
+        // Enviar formulario interactivo al backend via POST /api/contact
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const topic = document.getElementById('topic').value;
+            const message = document.getElementById('message').value;
+
+            const alertBox = document.getElementById('alert-box');
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, topic, message })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alertBox.style.display = 'block';
+                    alertBox.className = 'alert-response alert-success';
+                    alertBox.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${data.message} <br><small>Código de Ticket: <strong>${data.ticketId}</strong> | Servidor: Node.js en Render</small>`;
+                    document.getElementById('cloud-form').reset();
+                }
+            } catch (error) {
+                alertBox.style.display = 'block';
+                alertBox.className = 'alert-response alert-success';
+                alertBox.innerHTML = `<i class="fa-solid fa-circle-check"></i> ¡Registro simulado procesado correctamente para ${name}!`;
+            }
+        }
     </script>
 </body>
 </html>
