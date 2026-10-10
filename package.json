@@ -1,0 +1,25 @@
+{
+  "name": "cloudapp",
+  "version": "1.0.0",
+  "description": "Aplicación web moderna en Node.js y Express para la materia de Programación en la Nube",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "render",
+    "cloud",
+    "github"
+  ],
+  "author": "miguelangel angulo sossa (org744)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
